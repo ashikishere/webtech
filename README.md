@@ -1,4 +1,5 @@
-# NewsToday
+# Web tech
+simgple blog website suing php..
 
 ### Hi there, I'm Ashikur Zaman - aka [AZ Ashik][facebook] 👋
 
