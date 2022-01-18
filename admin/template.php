@@ -1,5 +1,7 @@
 <?php 
 include("inc/config.php");
+ob_start();
+$obj = new AdminBlog();
 session_start();
 $id = $_SESSION['adminID'];
 
@@ -49,6 +51,7 @@ include_once("inc/header.php");
     </div>
   </div>
   <?php include_once("inc/script.php") ?>
+  <?php ob_end_flush();?>
 </body>
 
 </html>

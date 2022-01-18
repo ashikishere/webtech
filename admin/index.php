@@ -60,8 +60,7 @@ if (isset($id)) {
                                                     password</label>
                                             </div>
                                         </div> -->
-                                        <div
-                                            class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <!-- <a class="small" href="password.html">Forgot Password?</a> -->
                                             <input type="submit" class="btn btn-primary btn-block" name="login_bnt"
                                                 value="Login">
