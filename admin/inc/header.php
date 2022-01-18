@@ -1,6 +1,7 @@
 <?php 
-include("inc/config.php");
-$objWebtech = new AdminBlog();
+// include("inc/config.php");
+// $objWebtech = new AdminBlog();
+// session_start();
 ?>
 
 
