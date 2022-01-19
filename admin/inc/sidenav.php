@@ -1,3 +1,7 @@
+<?php 
+$admin_name = $_SESSION['admin_name'];
+?>
+
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
@@ -36,8 +40,9 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+            <div class="small">Logged in as: <?php echo $admin_name; ?>
+            </div>
+            Webtech
         </div>
     </nav>
 </div>
