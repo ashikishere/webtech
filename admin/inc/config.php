@@ -126,6 +126,16 @@ class AdminBlog{
         }
     }
 
+    // Display post if publish
+
+    public function display_post_publish(){
+        $select_query = "SELECT * FROM post WHERE post_status=1  ORDER BY post_Id DESC";
+        if (mysqli_query($this->conn,$select_query)) {
+            $post = mysqli_query($this->conn,$select_query);
+            return  $post;
+        }
+    }
+
     // Edit post
 
     public function edit_post($edit_id){
