@@ -12,9 +12,10 @@
             </div>
             <div class="col-lg-12">
                 <div class="copyright-text">
-                    <p>Copyright 2020 Stand Blog Co.
+                    <p>Copyright 2022 Az Ashik.
 
-                        | Design: <a rel="nofollow" href="https://templatemo.com" target="_parent">TemplateMo</a></p>
+                        | Folow For more: <a rel="nofollow" href="https://https://www.facebook.com/Azashikishere/.com"
+                            target="_parent">Click Here</a></p>
                 </div>
             </div>
         </div>

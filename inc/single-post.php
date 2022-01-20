@@ -1,11 +1,15 @@
 <?php 
 
-$all_post          = $homeObj->display_post_publish();
-$db                =$homeObj->conn;
+if (isset($_GET['post_id'])) {
+    $post_id     = $_GET['post_id'];
+    $single_post = $homeObj->display_single_post($post_id);
+}
+$db               =$homeObj->conn;
 
 ?>
 
-<section class="blog-posts">
+
+<section class="blog-posts grid-system">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -13,7 +17,8 @@ $db                =$homeObj->conn;
                     <div class="row">
                         <div class="col-lg-12">
                             <?php 
-                            while ( $row = mysqli_fetch_assoc($all_post) ) {
+                            
+                            while ($row = mysqli_fetch_assoc($single_post)) {
                                 $post_id                  = $row['post_id'];
                                 $post_title               = $row['post_title'];
                                 $post_content             = $row['post_content'];
@@ -22,12 +27,12 @@ $db                =$homeObj->conn;
                                 $post_status              = $row['post_status'];
                                 $post_tags                = $row['post_tag'];
                                 $post_date                = $row['post_date'];
-                                $postsumary               = implode(' ', array_slice(str_word_count($post_content, 1), 0, 35));
-                            ?>
+
+                                ?>
                             <div class="blog-post">
                                 <div class="blog-thumb">
                                     <img src="images/<?php echo $post_img; ?>"
-                                        alt="Post Images">
+                                        alt="">
                                 </div>
                                 <div class="down-content">
                                     <span><?php 
@@ -43,27 +48,29 @@ $db                =$homeObj->conn;
                                     </span>
                                     <a
                                         href="post-details.php?post_id=<?php echo $post_id;?>">
-                                        <h4><?php echo $post_title;  ?>
+                                        <h4><?php echo $post_title ?>
                                         </h4>
                                     </a>
                                     <ul class="post-info">
                                         <li><a href="#">Admin</a></li>
                                         <li><a href="#"><?php echo $post_date; ?></a>
                                         </li>
-                                        <li><a href="#">12 Comments</a></li>
+                                        <li><a href="#">10 Comments</a></li>
                                     </ul>
-                                    <p><?php echo  $postsumary; ?>
-                                        <a
-                                            href="post-details.php?post_id=<?php echo $post_id;?>">Read
-                                            More</a>
+                                    <p><?php 
+                                    
+                                    echo $post_content;
+                                    
+                                    ?>
                                     </p>
                                     <div class="post-options">
                                         <div class="row">
                                             <div class="col-6">
                                                 <ul class="post-tags">
                                                     <li><i class="fa fa-tags"></i></li>
-                                                    <li><a href="#"><?php echo $post_tags; ?></a>,
+                                                    <li><a href="#"><?php echo $post_tags; ?></a>
                                                     </li>
+
                                                 </ul>
                                             </div>
                                             <div class="col-6">
@@ -79,19 +86,16 @@ $db                =$homeObj->conn;
                             </div>
                             <?php
                             }
+                            
                             ?>
+
                         </div>
-                        <div class="col-lg-12">
-                            <div class="main-button">
-                                <a href="blog.html">View All Posts</a>
-                            </div>
-                        </div>
+                        <?php include_once("comment.php"); ?>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
-                <!-- Sideber Section -->
-                <?php include_once("sideber.php") ?>
+                <?php include_once("sideber.php"); ?>
             </div>
         </div>
     </div>

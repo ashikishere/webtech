@@ -136,6 +136,25 @@ class AdminBlog{
         }
     }
 
+    // Display RECENT POST
+
+    public function display_recent_post(){
+        $select_query = "SELECT * FROM post WHERE post_status=1  ORDER BY post_Id DESC LIMIT 3";
+        if (mysqli_query($this->conn,$select_query)) {
+            $post = mysqli_query($this->conn,$select_query);
+            return  $post;
+        }
+    }
+
+    // Display single post
+    public function display_single_post($id){
+        $select_query = "SELECT * FROM post WHERE post_id=$id";
+        if (mysqli_query($this->conn,$select_query)) {
+            $post = mysqli_query($this->conn,$select_query);
+            return  $post;
+        }
+    }
+
     // Edit post
 
     public function edit_post($edit_id){

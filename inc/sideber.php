@@ -1,6 +1,7 @@
 <?php 
 
-$category_name  = $homeObj->display_category();
+$category_name     = $homeObj->display_category();
+$post              = $homeObj->display_recent_post();
 
 ?>
 
@@ -21,18 +22,25 @@ $category_name  = $homeObj->display_category();
                 </div>
                 <div class="content">
                     <ul>
-                        <li><a href="post-details.html">
-                                <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                                <span>May 31, 2020</span>
-                            </a></li>
-                        <li><a href="post-details.html">
-                                <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                                <span>May 28, 2020</span>
-                            </a></li>
-                        <li><a href="post-details.html">
-                                <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                                <span>May 14, 2020</span>
-                            </a></li>
+                        <?php 
+                        
+                        while ($row = mysqli_fetch_assoc($post)) {
+                            $post_id                  = $row['post_id'];
+                            $post_title               = $row['post_title'];
+                            $post_date                = $row['post_date'];
+
+                            ?>
+                        <li>
+                            <a
+                                href="post-details.php?post_id=<?php echo $post_id; ?>">
+                                <h5><?php echo $post_title ?>
+                                </h5>
+                                <span><?php echo $post_date; ?></span>
+                            </a>
+                        </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -53,12 +61,6 @@ $category_name  = $homeObj->display_category();
                         <?php
                          }
                         ?>
-                        <!-- <li><a href="#">- Nature Lifestyle</a></li>
-                        <li><a href="#">- Awesome Layouts</a></li>
-                        <li><a href="#">- Creative Ideas</a></li>
-                        <li><a href="#">- Responsive Templates</a></li>
-                        <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                        <li><a href="#">- Creative &amp; Unique</a></li> -->
                     </ul>
                 </div>
             </div>
