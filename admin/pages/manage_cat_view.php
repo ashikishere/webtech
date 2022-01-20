@@ -52,9 +52,9 @@ if (isset($_POST['update_cat_btn'])) {
             </td>
             <td>
                 <a href="manage_category.php?edit_id=<?php echo $cat_id; ?>"
-                    class="btn btn-primary">Edit</a>
+                    class="btn btn-primary"><i class="bi bi-pen"></i></a>
                 <a href="manage_category.php?delete_id=<?php echo $cat_id; ?>"
-                    class="btn btn-danger">Delete</a>
+                    class="btn btn-danger"><i class="bi bi-archive"></i></a>
             </td>
         </tr>
         <?php
@@ -73,17 +73,18 @@ if (isset($category_data)) {
     $cat_id   = $row['cat_id'];
 
     ?>
+<h3 class="mb-2">Update Your Category</h3>
 <form action="" method="post">
     <div class="form-group mt-2">
         <label class="small mb-1" for="add_cat">
-            Add New category
+            Update category
         </label>
         <input class="form-control py-4" id="add_cat" type="text" name="update_cat_name" required
             value="<?php echo $cat_name; ?>" />
     </div>
     <div class="form-group mt-3">
         <label class="small mb-1" for="cat_des">
-            category Description
+            Update Description
         </label>
         <input class="form-control py-4" id="cat_des" type="text" name="update_cat_des" required
             value="<?php echo $cat_des; ?>" />

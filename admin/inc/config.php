@@ -2,7 +2,7 @@
 
 
 class AdminBlog{
-    private $conn;
+    public $conn;
 
     public function __construct()
     {
@@ -99,6 +99,89 @@ class AdminBlog{
             die("category Delete Error!!" . mysqli_error($this->conn));
         }
     }
+
+
+    // Add post
+    public function add_post($post){
+        $post_title              = $post['post_title'];
+        $post_content            = $post['post_content'];
+        $post_img                = $_FILES['post_img']['name'];
+        $post_img_tmp            = $_FILES['post_img']['tmp_name'];
+        $post_cat_id             = $post['post_cat'];
+        $post_status             = $post['post_status'];
+        $post_tag                = $post['post_tag'];
+        $sql                     = "INSERT INTO post(post_title,post_content,post_img,post_author,post_date,post_comement_count,post_cat,post_tag,post_status) VALUES ('$post_title','$post_content','$post_img','1',now(),'10',$post_cat_id,'$post_tag',$post_status)";
+        if (mysqli_query($this->conn, $sql)) {
+            move_uploaded_file($post_img_tmp, "../images/$post_img");
+            return '<div class="alert alert-success mt-3" role="alert">Post Addded Successfull</div>';
+        }
+
+    }
+    // Dsiplay post
+    public function display_post(){
+        $select_query = "SELECT * FROM post ORDER BY post_Id DESC";
+        if (mysqli_query($this->conn,$select_query)) {
+            $post = mysqli_query($this->conn,$select_query);
+            return  $post;
+        }
+    }
+
+    // Edit post
+
+    public function edit_post($edit_id){
+        $edit_quray  = "SELECT * FROM post WHERE post_id=$edit_id";
+        if (mysqli_query($this->conn,$edit_quray)) {
+            $return_data = mysqli_query($this->conn,$edit_quray);
+            return  $return_data;
+        }
+    }
+
+    // Update Post
+    public function update_post($post){
+        $update_id               = $post['update_post_id'];
+        $post_title              = $post['post_title'];
+        $post_content            = $post['post_content'];
+        $post_img                = $_FILES['post_img']['name'];
+        $post_img_tmp            = $_FILES['post_img']['tmp_name'];
+        $post_status             = $post['post_status'];
+        $post_tag                = $post['post_tag'];
+       
+       if (!empty($post_img)) {
+        $update_query            = "UPDATE post SET post_title='$post_title',post_content='$post_content',post_img='$post_img',post_status=' $post_status',post_tag='$post_tag' WHERE post_id=$update_id";
+        $update                  = mysqli_query($this->conn, $update_query);
+        if ($update ) {
+            move_uploaded_file($post_img_tmp, "../images/$post_img");
+            header('Location: manage_post.php');
+        } else {
+            die("Post Update Error!!" . mysqli_error($this->conn));
+        }
+       }else{
+        $update_query            = "UPDATE post SET post_title='$post_title',post_content='$post_content',post_status=' $post_status',post_tag='$post_tag' WHERE post_id=$update_id";
+        $update                  = mysqli_query($this->conn, $update_query);
+        if ($update ) {
+            header('Location: manage_post.php');
+        } else {
+            die("Post Update Error!!" . mysqli_error($this->conn));
+        }
+       }
+    }
+
+
+    //Delete post 
+
+    public function delete_post($id){
+        $delete_query = "DELETE FROM post WHERE post_id= $id";
+        $res          = mysqli_query($this->conn, $delete_query);
+
+        if ($res) {
+            header('Location: manage_post.php');
+        } else {
+            die("Post Delete Error!!" . mysqli_error($this->conn));
+        }
+    }
+    
+
+    
 }
 
 
