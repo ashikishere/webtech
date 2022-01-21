@@ -5,6 +5,13 @@ $db                =$homeObj->conn;
 
 ?>
 
+<style>
+    .blog-img {
+        height: 320px;
+        object-fit: cover;
+    }
+</style>
+
 <section class="blog-posts">
     <div class="container">
         <div class="row">
@@ -27,7 +34,7 @@ $db                =$homeObj->conn;
                             <div class="blog-post">
                                 <div class="blog-thumb">
                                     <img src="images/<?php echo $post_img; ?>"
-                                        alt="Post Images">
+                                        alt="Post Images" class="blog-img">
                                 </div>
                                 <div class="down-content">
                                     <span><?php 

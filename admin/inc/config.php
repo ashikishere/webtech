@@ -139,7 +139,7 @@ class AdminBlog{
     // Display RECENT POST
 
     public function display_recent_post(){
-        $select_query = "SELECT * FROM post WHERE post_status=1  ORDER BY post_Id DESC LIMIT 3";
+        $select_query = "SELECT * FROM post WHERE post_status=1  ORDER BY post_Id DESC LIMIT 4";
         if (mysqli_query($this->conn,$select_query)) {
             $post = mysqli_query($this->conn,$select_query);
             return  $post;
@@ -209,6 +209,15 @@ class AdminBlog{
         }
     }
     
+    // Comments Dsiplay 
+
+    public function display_comments($id){
+        $sql = "SELECT * FROM comments WHERE cmt_post_id ='$id' AND cmt_status =1 ORDER BY cmt_id ASC";
+        if (mysqli_query($this->conn,$sql)) {
+            $post = mysqli_query($this->conn,$sql);
+            return  $post;
+        }
+    }
 
     
 }

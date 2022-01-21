@@ -7,7 +7,12 @@ if (isset($_GET['post_id'])) {
 $db               =$homeObj->conn;
 
 ?>
-
+<style>
+    .Single-post {
+        height: 350px;
+        object-fit: cover;
+    }
+</style>
 
 <section class="blog-posts grid-system">
     <div class="container">
@@ -32,7 +37,7 @@ $db               =$homeObj->conn;
                             <div class="blog-post">
                                 <div class="blog-thumb">
                                     <img src="images/<?php echo $post_img; ?>"
-                                        alt="">
+                                        alt="Post Image" class="Single-post">
                                 </div>
                                 <div class="down-content">
                                     <span><?php 
@@ -84,13 +89,14 @@ $db               =$homeObj->conn;
                                     </div>
                                 </div>
                             </div>
+                            <?php include_once("comment.php"); ?>
                             <?php
                             }
                             
                             ?>
 
                         </div>
-                        <?php include_once("comment.php"); ?>
+
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@
             </div>
             <div class="col-lg-12">
                 <div class="copyright-text">
-                    <p>Copyright 2022 Az Ashik.
+                    <p>Copyright <?php echo date("Y");?> Az Ashik.
 
                         | Folow For more: <a rel="nofollow" href="https://https://www.facebook.com/Azashikishere/.com"
                             target="_parent">Click Here</a></p>
