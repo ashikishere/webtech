@@ -44,6 +44,8 @@ include_once("inc/header.php");
                         include("pages/manage_post_view.php");
                       }elseif ($view == "edit_post"){
                         include("pages/edit_post_view.php");
+                      }elseif ($view == "manage_cooments"){
+                        include("pages/manage_cmt_view.php");
                       }
                    }
                    ?>
